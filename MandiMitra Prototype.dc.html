@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="_ds/organic-c85992e3-6cbb-4411-915b-116a259fee47/styles.css">
+<script src="_ds/organic-c85992e3-6cbb-4411-915b-116a259fee47/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;family=Noto+Sans+Gurmukhi:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  body{margin:0;}
+  a{color:var(--color-accent-700);text-decoration:none;}
+  a:hover{color:var(--color-accent-800);}
+  @keyframes blip{0%,100%{opacity:1}50%{opacity:.25}}
+  @keyframes ring{0%{box-shadow:0 0 0 0 rgba(255,255,255,.35)}100%{box-shadow:0 0 0 16px rgba(255,255,255,0)}}
+</style>
+</helmet>
+<div style="min-height:100vh;background:var(--color-bg);display:flex;flex-direction:column;align-items:center;gap:28px;padding:44px 20px 60px;font-family:var(--font-body),'Noto Sans Devanagari','Noto Sans Gurmukhi',sans-serif;box-sizing:border-box;color:var(--color-text);">
+
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;">
+    <span class="tag tag-accent-2" style="font-weight:600;letter-spacing:.06em;">Smart India Hackathon 2026</span>
+    <div style="font-family:var(--font-heading);font-size:30px;color:var(--color-text);">MandiMitra</div>
+    <div style="font-size:13.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent);max-width:460px;">Tap through the phone below, or jump straight to a screen.</div>
+  </div>
+
+  <sc-if value="{{ showDemoNav }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;gap:9px;flex-wrap:wrap;justify-content:center;">
+      <sc-for list="{{ jumpPills }}" as="p" hint-placeholder-count="6">
+        <button onClick="{{ p.onClick }}" style="{{ p.style }}">{{ p.label }}</button>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" width="{{ androidWidth }}" height="{{ androidHeight }}" hint-size="412px,892px">
+
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;height:100%;background:var(--color-bg);">
+      <div style="background:var(--color-neutral-900);padding:18px 18px 22px;flex-shrink:0;">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--color-accent-700);color:var(--color-bg);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;">{{ farmerInitials }}</div>
+            <div>
+              <div style="color:rgba(255,255,255,.6);font-size:11.5px;">नमस्ते&nbsp;</div>
+              <div style="color:#fff;font-size:17px;font-weight:700;">{{ farmerName }}</div>
+            </div>
+          </div>
+          <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.9.32 1.79.57 2.65a2 2 0 01-.45 2.11L8.09 9.62a16 16 0 006.29 6.29l1.14-1.14a2 2 0 012.11-.45c.86.25 1.75.44 2.65.57A2 2 0 0122 16.92z"></path></svg>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px;">
+        <div style="background:var(--color-neutral-100);border-radius:calc(var(--radius-lg) * 1.15);padding:16px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--shadow-sm);">
+          <div style="width:40px;height:40px;border-radius:var(--radius-md);background:var(--color-accent-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="2.75"><path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-6h6v6"></path></svg>
+          </div>
+          <div>
+            <div style="font-size:11px;color:color-mix(in srgb, var(--color-text) 55%, transparent);font-weight:700;text-transform:uppercase;letter-spacing:.04em;">Registered Mandi</div>
+            <div style="font-size:16px;font-weight:700;color:var(--color-text);margin-top:3px;">{{ registeredMandi.name }} · {{ registeredMandi.nameHi }}</div>
+            <div style="font-size:12.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-top:2px;">{{ registeredMandi.district }} · Wheat season / गेहूं का मौसम</div>
+          </div>
+        </div>
+
+        <sc-if value="{{ hasBooking }}" hint-placeholder-val="{{ false }}">
+          <div onClick="{{ goStatus }}" style="background:var(--color-accent-100);border:1.5px solid var(--color-accent-300);border-radius:var(--radius-lg);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:var(--color-accent-700);text-transform:uppercase;letter-spacing:.04em;">Upcoming Slot</div>
+              <div style="font-size:13.5px;font-weight:700;color:var(--color-text);margin-top:3px;">{{ bookingSummaryShort }}</div>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:var(--color-accent-700);flex-shrink:0;">Track →</div>
+          </div>
+        </sc-if>
+
+        <button onClick="{{ goBooking }}" style="text-align:left;background:var(--color-accent);border:none;border-radius:999px;padding:18px 20px;display:flex;align-items:center;gap:14px;cursor:pointer;box-shadow:0 6px 18px color-mix(in srgb, var(--color-accent) 35%, transparent);" style-hover="background:var(--color-accent-600);">
+          <div style="width:46px;height:46px;border-radius:var(--radius-md);background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.75"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4M12 14v4M10 16h4"></path></svg>
+          </div>
+          <div>
+            <div style="color:#fff;font-family:var(--font-heading);font-size:18px;">Book a Slot</div>
+            <div style="color:rgba(255,255,255,.85);font-size:12.5px;margin-top:2px;">स्लॉट बुक करें · ਸਲਾਟ ਬੁੱਕ ਕਰੋ</div>
+          </div>
+        </button>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+          <button onClick="{{ goStatus }}" style="background:var(--color-neutral-100);border:1px solid var(--color-divider);border-radius:var(--radius-lg);padding:14px 6px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="2.75"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+            <div style="font-size:11.5px;font-weight:600;color:var(--color-text);text-align:center;line-height:1.35;">Live Status<br><span style="font-size:10px;color:color-mix(in srgb, var(--color-text) 55%, transparent);font-weight:500;">स्थिति</span></div>
+          </button>
+          <button onClick="{{ goSwap }}" style="background:var(--color-neutral-100);border:1px solid var(--color-divider);border-radius:var(--radius-lg);padding:14px 6px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="2.75"><path d="M17 2l4 4-4 4M21 6H7a4 4 0 00-4 4v1M7 22l-4-4 4-4M3 18h14a4 4 0 004-4v-1"></path></svg>
+            <div style="font-size:11.5px;font-weight:600;color:var(--color-text);text-align:center;line-height:1.35;">Reschedule<br><span style="font-size:10px;color:color-mix(in srgb, var(--color-text) 55%, transparent);font-weight:500;">बदलें</span></div>
+          </button>
+          <button onClick="{{ goIvr }}" style="background:var(--color-neutral-100);border:1px solid var(--color-divider);border-radius:var(--radius-lg);padding:14px 6px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-700)" stroke-width="2.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.9.32 1.79.57 2.65a2 2 0 01-.45 2.11L8.09 9.62a16 16 0 006.29 6.29l1.14-1.14a2 2 0 012.11-.45c.86.25 1.75.44 2.65.57A2 2 0 0122 16.92z"></path></svg>
+            <div style="font-size:11.5px;font-weight:600;color:var(--color-text);text-align:center;line-height:1.35;">Call Helpline<br><span style="font-size:10px;color:color-mix(in srgb, var(--color-text) 55%, transparent);font-weight:500;">सहायता</span></div>
+          </button>
+        </div>
+
+        <div style="text-align:center;font-size:11px;color:color-mix(in srgb, var(--color-text) 40%, transparent);margin-top:2px;">Works with e-Kharid / Anaaj Kharid &amp; DBT · Government procurement</div>
+      </div>
+
+      <div style="flex-shrink:0;background:var(--color-neutral-100);border-top:1px solid var(--color-divider);display:flex;justify-content:space-around;padding:10px 0 12px;">
+        <button onClick="{{ goHome }}" style="background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ tabHomeColor }}" stroke-width="2.75"><path d="M3 11l9-8 9 8M5 10v10h14V10"></path></svg>
+          <div style="font-size:11px;font-weight:600;color:{{ tabHomeColor }};">Home</div>
+        </button>
+        <button onClick="{{ goBooking }}" style="background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ tabBookColor }}" stroke-width="2.75"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+          <div style="font-size:11px;font-weight:600;color:{{ tabBookColor }};">Book</div>
+        </button>
+        <button onClick="{{ goStatus }}" style="background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ tabStatusColor }}" stroke-width="2.75"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+          <div style="font-size:11px;font-weight:600;color:{{ tabStatusColor }};">Status</div>
+        </button>
+        <button onClick="{{ goIvr }}" style="background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ tabHelpColor }}" stroke-width="2.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.9.32 1.79.57 2.65a2 2 0 01-.45 2.11L8.09 9.62a16 16 0 006.29 6.29l1.14-1.14a2 2 0 012.11-.45c.86.25 1.75.44 2.65.57A2 2 0 0122 16.92z"></path></svg>
+          <div style="font-size:11px;font-weight:600;color:{{ tabHelpColor }};">Help</div>
+        </button>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isBooking }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;height:100%;background:var(--color-bg);">
+      <div style="background:var(--color-neutral-900);padding:16px 18px;display:flex;align-items:center;gap:14px;flex-shrink:0;">
+        <button onClick="{{ goHome }}" style="background:rgba(255,255,255,.1);border:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.75"><path d="M15 18l-6-6 6-6"></path></svg>
+        </button>
+        <div>
+          <div style="color:#fff;font-family:var(--font-heading);font-size:16px;">Book a Slot</div>
+          <div style="color:rgba(255,255,255,.65);font-size:12px;margin-top:2px;">स्लॉट बुक करें</div>
+        </div>
+      </div>
+
+      <div style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:22px;">
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--color-text);margin-bottom:10px;">Choose Mandi <span style="color:color-mix(in srgb, var(--color-text) 40%, transparent);font-weight:500;">/ मंडी चुनें</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <sc-for list="{{ mandiList }}" as="mandi" hint-placeholder-count="4">
+              <div onClick="{{ mandi.onClick }}" style="{{ mandi.cardStyle }}">
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;">
+                  <div>
+                    <div style="font-size:15px;font-weight:700;color:var(--color-text);">{{ mandi.name }}</div>
+                    <div style="font-size:12px;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-top:1px;">{{ mandi.nameHi }} · {{ mandi.district }}</div>
+                  </div>
+                  <div style="{{ mandi.badgeStyle }}"><span style="width:6px;height:6px;border-radius:50%;background:{{ mandi.dotColor }};display:inline-block;"></span>{{ mandi.label }}</div>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">
+                  <div style="display:flex;align-items:flex-end;gap:3px;">
+                    <sc-for list="{{ mandi.bars }}" as="bar" hint-placeholder-count="3">
+                      <span style="{{ bar.style }}"></span>
+                    </sc-for>
+                  </div>
+                  <div style="font-size:11.5px;color:color-mix(in srgb, var(--color-text) 40%, transparent);">{{ mandi.queueNote }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--color-text);margin-bottom:10px;">Choose Date <span style="color:color-mix(in srgb, var(--color-text) 40%, transparent);font-weight:500;">/ तारीख़ चुनें</span></div>
+          <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;">
+            <sc-for list="{{ dateList }}" as="d" hint-placeholder-count="5">
+              <div onClick="{{ d.onClick }}" style="{{ d.style }}">
+                <div style="font-size:13px;font-weight:700;">{{ d.label }}</div>
+                <div style="font-size:11px;opacity:.85;margin-top:2px;">{{ d.sub }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--color-text);margin-bottom:10px;">Available Time Windows <span style="color:color-mix(in srgb, var(--color-text) 40%, transparent);font-weight:500;">/ उपलब्ध समय</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <sc-for list="{{ timeList }}" as="t" hint-placeholder-count="6">
+              <div onClick="{{ t.onClick }}" style="{{ t.chipStyle }}">
+                <div style="{{ t.badgeStyle }}">{{ t.statusLabel }} · {{ t.statusLabelHi }}</div>
+                <div style="font-size:14px;font-weight:700;color:var(--color-text);">{{ t.label }}</div>
+                <div style="display:flex;align-items:flex-end;gap:3px;">
+                  <sc-for list="{{ t.bars }}" as="bar" hint-placeholder-count="3">
+                    <span style="{{ bar.style }}"></span>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex-shrink:0;padding:14px 16px;background:var(--color-neutral-100);border-top:1px solid var(--color-divider);">
+        <button onClick="{{ onConfirmBooking }}" style="{{ confirmButtonStyle }}">Confirm Booking · बुकिंग की पुष्टि करें</button>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isConfirm }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;height:100%;background:var(--color-bg);">
+      <div style="background:var(--color-neutral-900);padding:16px 18px;display:flex;align-items:center;gap:14px;flex-shrink:0;">
+        <button onClick="{{ goHome }}" style="background:rgba(255,255,255,.1);border:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.75"><path d="M15 18l-6-6 6-6"></path></svg>
+        </button>
+        <div>
+          <div style="color:#fff;font-family:var(--font-heading);font-size:16px;">Booking Confirmed</div>
+          <div style="color:rgba(255,255,255,.65);font-size:12px;margin-top:2px;">बुकिंग की पुष्टि हुई</div>
+        </div>
+      </div>
+
+      <div style="flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px;align-items:center;">
+        <div style="width:60px;height:60px;border-radius:50%;background:var(--color-accent-2-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-2-700)" stroke-width="2.75"><path d="M20 6L9 17l-5-5"></path></svg>
+        </div>
+
+        <div style="width:100%;background:var(--color-neutral-100);border-radius:calc(var(--radius-lg) * 1.15);padding:16px;box-sizing:border-box;">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:13px;color:color-mix(in srgb, var(--color-text) 55%, transparent);">Mandi / मंडी</span><span style="font-size:13px;font-weight:700;color:var(--color-text);">{{ selectedMandi.name }}</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:13px;color:color-mix(in srgb, var(--color-text) 55%, transparent);">Date / तारीख़</span><span style="font-size:13px;font-weight:700;color:var(--color-text);">{{ selectedDate.label }} · {{ selectedDate.sub }}</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:13px;color:color-mix(in srgb, var(--color-text) 55%, transparent);">Time / समय</span><span style="font-size:13px;font-weight:700;color:var(--color-text);">{{ selectedTimeLabel }}</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:13px;color:color-mix(in srgb, var(--color-text) 55%, transparent);">Token No.</span><span style="font-size:13px;font-weight:800;color:var(--color-accent-700);">{{ tokenNo }}</span></div>
+        </div>
+
+        <div style="width:100%;background:var(--color-neutral-100);border-radius:calc(var(--radius-lg) * 1.15);padding:16px;display:flex;flex-direction:column;align-items:center;gap:10px;box-sizing:border-box;">
+          <div style="display:grid;grid-template-columns:repeat(9,10px);grid-template-rows:repeat(9,10px);gap:1px;background:#fff;padding:8px;border-radius:var(--radius-sm);">
+            <sc-for list="{{ qrCells }}" as="cell" hint-placeholder-count="81">
+              <span style="width:10px;height:10px;background:{{ cell.color }};"></span>
+            </sc-for>
+          </div>
+          <div style="font-size:12px;color:color-mix(in srgb, var(--color-text) 55%, transparent);text-align:center;">Show this QR at the gate<br><span style="font-size:11px;">गेट पर यह QR दिखाएं</span></div>
+        </div>
+
+        <div style="width:100%;background:var(--color-accent-2-100);border-radius:var(--radius-lg);padding:12px 14px;display:flex;align-items:center;gap:10px;box-sizing:border-box;">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--color-accent-2-600);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.75"><path d="M20 6L9 17l-5-5"></path></svg>
+          </div>
+          <div>
+            <div style="font-size:12.5px;font-weight:700;color:var(--color-accent-2-800);">Sent via SMS ✓</div>
+            <div style="font-size:11.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent);">Also confirmed by IVR call · 1800-180-1551</div>
+          </div>
+        </div>
+
+        <button onClick="{{ goStatus }}" style="width:100%;background:var(--color-accent);border:none;border-radius:999px;padding:16px;color:var(--color-bg);font-family:var(--font-heading);font-size:15px;cursor:pointer;box-sizing:border-box;" style-hover="background:var(--color-accent-600);">Track Live Status</button>
+        <button onClick="{{ goHome }}" style="width:100%;background:none;border:none;color:color-mix(in srgb, var(--color-text) 55%, transparent);font-size:13px;font-weight:600;padding:6px;cursor:pointer;">Back to Home</button>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isStatus }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;height:100%;background:var(--color-bg);">
+      <div style="background:var(--color-neutral-900);padding:16px 18px;display:flex;align-items:center;gap:14px;flex-shrink:0;">
+        <button onClick="{{ goHome }}" style="background:rgba(255,255,255,.1);border:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.75"><path d="M15 18l-6-6 6-6"></path></svg>
+        </button>
+        <div>
+          <div style="color:#fff;font-family:var(--font-heading);font-size:16px;">Live Status</div>
+          <div style="color:rgba(255,255,255,.65);font-size:12px;margin-top:2px;">लाइव स्थिति</div>
+        </div>
+      </div>
+
+      <div style="flex:1;overflow-y:auto;padding:18px 18px 6px;">
+        <div style="font-size:12px;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-bottom:16px;">{{ selectedMandi.name }} · {{ selectedDate.sub }} · {{ selectedTimeLabel }}</div>
+
+        <div style="display:flex;gap:14px;">
+          <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--color-accent-600);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"></path></svg>
+            </div>
+            <div style="{{ stage1Line }}"></div>
+          </div>
+          <div style="padding-bottom:20px;flex:1;">
+            <div style="font-size:14.5px;font-weight:700;color:var(--color-text);">Booked <span style="font-weight:500;color:color-mix(in srgb, var(--color-text) 40%, transparent);font-size:12px;">/ बुक हुआ</span></div>
+            <div style="font-size:12.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-top:2px;">Confirmed for {{ selectedTimeLabel }}</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;">
+          <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+            <div style="{{ stage1Circle }}">
+              <sc-if value="{{ queueDone }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"></path></svg></sc-if>
+              <sc-if value="{{ queueCurrent }}" hint-placeholder-val="{{ true }}"><span style="width:8px;height:8px;border-radius:50%;background:#fff;display:inline-block;animation:blip 1.4s infinite;"></span></sc-if>
+            </div>
+            <div style="{{ stage2Line }}"></div>
+          </div>
+          <div style="padding-bottom:20px;flex:1;">
+            <div style="font-size:14.5px;font-weight:700;color:var(--color-text);">Queue Position <span style="font-weight:500;color:color-mix(in srgb, var(--color-text) 40%, transparent);font-size:12px;">/ आपकी बारी</span></div>
+            <sc-if value="{{ queueCurrent }}" hint-placeholder-val="{{ true }}">
+              <div style="margin-top:6px;background:var(--color-accent-100);border:1px solid var(--color-accent-300);border-radius:var(--radius-md);padding:10px 12px;display:inline-flex;align-items:center;gap:8px;">
+                <span style="width:7px;height:7px;border-radius:50%;background:var(--color-accent-600);display:inline-block;animation:blip 1.2s infinite;flex-shrink:0;"></span>
+                <span style="font-size:14px;font-weight:800;color:var(--color-accent-700);">You are #14</span>
+                <span style="font-size:12px;color:var(--color-text);">· ~40 min wait</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{ queueDone }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:12.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-top:2px;">Reached the gate after ~38 min wait</div>
+            </sc-if>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;">
+          <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+            <div style="{{ stage2Circle }}">
+              <sc-if value="{{ done2 }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"></path></svg></sc-if>
+              <sc-if value="{{ current2 }}" hint-placeholder-val="{{ false }}"><span style="width:8px;height:8px;border-radius:50%;background:#fff;display:inline-block;animation:blip 1.4s infinite;"></span></sc-if>
+            </div>
+            <div style="{{ stage3Line }}"></div>
+          </div>
+          <div style="padding-bottom:20px;flex:1;">
+            <div style="font-size:14.5px;font-weight:700;color:var(--color-text);">Gate Entry <span style="font-weight:500;color:color-mix(in srgb, var(--color-text) 40%, transparent);font-size:12px;">/ गेट प्रवेश</span></div>
+            <sc-if value="{{ reached2 }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-top:2px;">QR scanned · entry logged at gate</div></sc-if>
+            <sc-if value="{{ notReached2 }}" hint-placeholder-val="{{ true }}"><div style="font-size:12.5px;color:color-mix(in srgb, var(--color-text) 28%, transparent);margin-top:2px;">Pending</div></sc-if>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;">
+          <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+            <div style="{{ stage3Circle }}">
+              <sc-if value="{{ done3 }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"></path></svg></sc-if>
+              <sc-if value="{{ current3 }}" hint-placeholder-val="{{ false }}"><span style="width:8px;height:8px;border-radius:50%;background:#fff;display:inline-block;animation:blip 1.4s infinite;"></span></sc-if>
+            </div>
+            <div style="{{ stage4Line }}"></div>
+          </div>
+          <div style="padding-bottom:20px;flex:1;">
+            <div style="font-size:14.5px;font-weight:700;color:var(--color-text);">Weighment &amp; Grading <span style="font-weight:500;color:color-mix(in srgb, var(--color-text) 40%, transparent);font-size:12px;">/ वज़न व जांच</span></div>
+            <sc-if value="{{ notReached3 }}" hint-placeholder-val="{{ true }}"><div style="font-size:12.5px;color:color-mix(in srgb, var(--color-text) 28%, transparent);margin-top:2px;">Pending</div></sc-if>
+            <sc-if value="{{ reached3 }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
+                <div style="background:var(--color-neutral-100);border:1px solid var(--color-divider);border-radius:var(--radius-md);padding:8px 12px;"><div style="font-size:10.5px;color:color-mix(in srgb, var(--color-text) 40%, transparent);">Moisture</div><div style="font-size:14px;font-weight:700;color:var(--color-text);">{{ moisture }}</div></div>
+                <div style="background:var(--color-neutral-100);border:1px solid var(--color-divider);border-radius:var(--radius-md);padding:8px 12px;"><div style="font-size:10.5px;color:color-mix(in srgb, var(--color-text) 40%, transparent);">Weight</div><div style="font-size:14px;font-weight:700;color:var(--color-text);">{{ weightKg }}</div></div>
+                <div style="background:var(--color-neutral-100);border:1px solid var(--color-divider);border-radius:var(--radius-md);padding:8px 12px;"><div style="font-size:10.5px;color:color-mix(in srgb, var(--color-text) 40%, transparent);">Grade</div><div style="font-size:14px;font-weight:700;color:var(--color-text);">{{ grade }}</div></div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;">
+          <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+            <div style="{{ stage4Circle }}">
+              <sc-if value="{{ done4 }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"></path></svg></sc-if>
+              <sc-if value="{{ current4 }}" hint-placeholder-val="{{ false }}"><span style="width:8px;height:8px;border-radius:50%;background:#fff;display:inline-block;animation:blip 1.4s infinite;"></span></sc-if>
+            </div>
+            <div style="{{ stage5Line }}"></div>
+          </div>
+          <div style="padding-bottom:20px;flex:1;">
+            <div style="font-size:14.5px;font-weight:700;color:var(--color-text);">J-Form Generated <span style="font-weight:500;color:color-mix(in srgb, var(--color-text) 40%, transparent);font-size:12px;">/ जे-फॉर्म</span></div>
+            <sc-if value="{{ notReached4 }}" hint-placeholder-val="{{ true }}"><div style="font-size:12.5px;color:color-mix(in srgb, var(--color-text) 28%, transparent);margin-top:2px;">Pending</div></sc-if>
+            <sc-if value="{{ reached4 }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-top:3px;">{{ jformNo }}</div></sc-if>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;">
+          <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;">
+            <div style="{{ stage5Circle }}">
+              <sc-if value="{{ paid }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"></path></svg></sc-if>
+              <sc-if value="{{ current5 }}" hint-placeholder-val="{{ false }}"><span style="width:8px;height:8px;border-radius:50%;background:#fff;display:inline-block;animation:blip 1.4s infinite;"></span></sc-if>
+            </div>
+          </div>
+          <div style="padding-bottom:8px;flex:1;">
+            <div style="font-size:14.5px;font-weight:700;color:var(--color-text);">DBT Payment <span style="font-weight:500;color:color-mix(in srgb, var(--color-text) 40%, transparent);font-size:12px;">/ भुगतान</span></div>
+            <sc-if value="{{ notReached5 }}" hint-placeholder-val="{{ true }}"><div style="font-size:12.5px;color:color-mix(in srgb, var(--color-text) 28%, transparent);margin-top:2px;">Pending</div></sc-if>
+            <sc-if value="{{ current5 }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:8px;background:var(--color-neutral-100);border:1px solid var(--color-divider);border-radius:var(--radius-md);padding:12px;">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;"><span style="font-size:12.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent);">Amount</span><span style="font-size:15px;font-weight:800;color:var(--color-text);">{{ dbtAmount }}</span></div>
+                <div style="display:flex;justify-content:space-between;margin-top:8px;"><span style="font-size:11.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent);">48-hr DBT norm</span><span style="font-size:11.5px;font-weight:700;color:var(--color-accent-700);">{{ dbtHoursLeft }} left</span></div>
+                <div style="height:6px;background:var(--color-neutral-300);border-radius:3px;margin-top:6px;overflow:hidden;"><div style="height:100%;background:var(--color-accent-600);width:{{ dbtProgressPct }};"></div></div>
+                <div style="font-size:11px;color:color-mix(in srgb, var(--color-text) 40%, transparent);margin-top:6px;">Direct to your linked bank account</div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ paid }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:8px;display:inline-flex;align-items:center;gap:8px;background:var(--color-accent-2-100);border:1px solid var(--color-accent-2-300);border-radius:999px;padding:8px 14px;">
+                <span style="font-size:13px;font-weight:800;color:var(--color-accent-2-800);">✓ Paid</span>
+                <span style="font-size:12px;color:var(--color-text);">{{ dbtAmount }} · 8 Sep, 2:15 PM</span>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+
+      <sc-if value="{{ showAdvance }}" hint-placeholder-val="{{ true }}">
+        <div style="flex-shrink:0;padding:8px 16px 12px;">
+          <button onClick="{{ onAdvance }}" style="width:100%;background:var(--color-neutral-100);border:1.5px dashed var(--color-accent);border-radius:999px;padding:11px;color:var(--color-accent-700);font-size:12.5px;font-weight:700;cursor:pointer;">{{ advanceLabel }}</button>
+        </div>
+      </sc-if>
+
+      <div style="flex-shrink:0;padding:0 16px 12px;text-align:center;">
+        <a onClick="{{ goSwap }}" style="font-size:12.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent);cursor:pointer;">Crop not ready? <span style="color:var(--color-accent-700);font-weight:700;">Reschedule or release your slot →</span></a>
+      </div>
+
+      <div style="flex-shrink:0;background:var(--color-neutral-100);border-top:1px solid var(--color-divider);display:flex;justify-content:space-around;padding:10px 0 12px;">
+        <button onClick="{{ goHome }}" style="background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ tabHomeColor }}" stroke-width="2.75"><path d="M3 11l9-8 9 8M5 10v10h14V10"></path></svg>
+          <div style="font-size:11px;font-weight:600;color:{{ tabHomeColor }};">Home</div>
+        </button>
+        <button onClick="{{ goBooking }}" style="background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ tabBookColor }}" stroke-width="2.75"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+          <div style="font-size:11px;font-weight:600;color:{{ tabBookColor }};">Book</div>
+        </button>
+        <button onClick="{{ goStatus }}" style="background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ tabStatusColor }}" stroke-width="2.75"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+          <div style="font-size:11px;font-weight:600;color:{{ tabStatusColor }};">Status</div>
+        </button>
+        <button onClick="{{ goIvr }}" style="background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ tabHelpColor }}" stroke-width="2.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.9.32 1.79.57 2.65a2 2 0 01-.45 2.11L8.09 9.62a16 16 0 006.29 6.29l1.14-1.14a2 2 0 012.11-.45c.86.25 1.75.44 2.65.57A2 2 0 0122 16.92z"></path></svg>
+          <div style="font-size:11px;font-weight:600;color:{{ tabHelpColor }};">Help</div>
+        </button>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isSwap }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;height:100%;background:var(--color-bg);">
+      <div style="background:var(--color-neutral-900);padding:16px 18px;display:flex;align-items:center;gap:14px;flex-shrink:0;">
+        <button onClick="{{ goStatus }}" style="background:rgba(255,255,255,.1);border:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.75"><path d="M15 18l-6-6 6-6"></path></svg>
+        </button>
+        <div>
+          <div style="color:#fff;font-family:var(--font-heading);font-size:16px;">Reschedule / Swap</div>
+          <div style="color:rgba(255,255,255,.65);font-size:12px;margin-top:2px;">स्लॉट बदलें</div>
+        </div>
+      </div>
+
+      <div style="flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:16px;">
+        <sc-if value="{{ swapDone }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding-top:24px;">
+            <div style="width:60px;height:60px;border-radius:50%;background:var(--color-accent-2-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-2-700)" stroke-width="2.75"><path d="M20 6L9 17l-5-5"></path></svg>
+            </div>
+            <div style="font-size:15px;font-weight:700;color:var(--color-text);text-align:center;">{{ swapResultText }}</div>
+            <button onClick="{{ onSwapBackHome }}" style="width:100%;background:var(--color-accent);border:none;border-radius:999px;padding:15px;color:var(--color-bg);font-family:var(--font-heading);font-size:14px;cursor:pointer;box-sizing:border-box;" style-hover="background:var(--color-accent-600);">Back to Home</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ !swapDone }}" hint-placeholder-val="{{ true }}">
+          <div style="background:var(--color-neutral-100);border-radius:var(--radius-lg);padding:14px 16px;box-sizing:border-box;">
+            <div style="font-size:11px;font-weight:700;color:color-mix(in srgb, var(--color-text) 40%, transparent);text-transform:uppercase;letter-spacing:.04em;">Current Booking</div>
+            <div style="font-size:14px;font-weight:700;color:var(--color-text);margin-top:4px;">{{ currentBookingLabel }}</div>
+          </div>
+
+          <div style="background:var(--color-neutral-100);border-radius:calc(var(--radius-lg) * 1.15);padding:16px;box-sizing:border-box;">
+            <div style="font-size:14px;font-weight:700;color:var(--color-text);">Release Slot <span style="font-weight:500;color:color-mix(in srgb, var(--color-text) 40%, transparent);font-size:11.5px;">/ स्लॉट छोड़ें</span></div>
+            <div style="font-size:12.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-top:6px;line-height:1.5;">Crop not ready yet? Release your slot back to the pool so another farmer can use it.</div>
+            <button onClick="{{ onRelease }}" style="width:100%;margin-top:12px;background:var(--color-neutral-100);border:1.5px solid var(--color-accent);border-radius:999px;padding:12px;color:var(--color-accent-700);font-size:13.5px;font-weight:700;cursor:pointer;box-sizing:border-box;">Release Slot</button>
+          </div>
+
+          <div style="background:var(--color-neutral-100);border-radius:calc(var(--radius-lg) * 1.15);padding:16px;box-sizing:border-box;">
+            <div style="font-size:14px;font-weight:700;color:var(--color-text);">Swap for Another Slot <span style="font-weight:500;color:color-mix(in srgb, var(--color-text) 40%, transparent);font-size:11.5px;">/ बदलें</span></div>
+            <div style="font-size:12.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-top:6px;">Pick an open slot to trade into:</div>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
+              <sc-for list="{{ altSlots }}" as="a" hint-placeholder-count="3">
+                <div onClick="{{ a.onClick }}" style="{{ a.style }}">{{ a.label }}</div>
+              </sc-for>
+            </div>
+            <button onClick="{{ onConfirmSwap }}" style="{{ confirmSwapStyle }}">Confirm Swap</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isIvr }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;height:100%;background:var(--color-neutral-900);">
+      <div style="flex-shrink:0;padding:14px 18px;display:flex;align-items:center;gap:10px;">
+        <button onClick="{{ goHome }}" style="background:rgba(255,255,255,.1);border:none;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.75"><path d="M15 18l-6-6 6-6"></path></svg>
+        </button>
+        <div style="color:rgba(255,255,255,.5);font-size:12px;font-weight:600;">IVR · Non-smartphone flow</div>
+      </div>
+
+      <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:12px;padding:4px 20px 20px;box-sizing:border-box;">
+        <div style="width:80px;height:80px;border-radius:50%;background:var(--color-accent-600);display:flex;align-items:center;justify-content:center;animation:ring 1.8s infinite;margin-top:4px;flex-shrink:0;">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.75"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.9.32 1.79.57 2.65a2 2 0 01-.45 2.11L8.09 9.62a16 16 0 006.29 6.29l1.14-1.14a2 2 0 012.11-.45c.86.25 1.75.44 2.65.57A2 2 0 0122 16.92z"></path></svg>
+        </div>
+        <div style="color:#fff;font-family:var(--font-heading);font-size:16.5px;">MandiMitra Sahayata</div>
+        <div style="color:rgba(255,255,255,.5);font-size:12.5px;">1800-180-1551 · {{ callTimer }}</div>
+
+        <div style="width:100%;background:rgba(255,255,255,.06);border-radius:var(--radius-lg);padding:10px;display:flex;flex-direction:column;gap:6px;margin-top:4px;box-sizing:border-box;">
+          <sc-for list="{{ ivrMenu }}" as="m" hint-placeholder-count="5">
+            <div style="{{ m.rowStyle }}">
+              <div style="{{ m.numStyle }}">{{ m.digit }}</div>
+              <div>
+                <div style="{{ m.textStyle }}">{{ m.label }}</div>
+                <div style="{{ m.subStyle }}">{{ m.labelHi }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="color:rgba(255,255,255,.6);font-size:11.5px;text-align:center;min-height:14px;">{{ ivrToast }}</div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:auto;padding-top:4px;">
+          <sc-for list="{{ keypadItems }}" as="k" hint-placeholder-count="12">
+            <button onClick="{{ k.onClick }}" style="{{ k.style }}">{{ k.digit }}</button>
+          </sc-for>
+        </div>
+
+        <button style="margin-top:12px;width:52px;height:52px;border-radius:50%;background:var(--color-accent-800);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" stroke="none" style="transform:rotate(135deg);"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.9.32 1.79.57 2.65a2 2 0 01-.45 2.11L8.09 9.62a16 16 0 006.29 6.29l1.14-1.14a2 2 0 012.11-.45c.86.25 1.75.44 2.65.57A2 2 0 0122 16.92z"></path></svg>
+        </button>
+      </div>
+    </div>
+    </sc-if>
+
+  </x-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1200, &quot;height&quot;: 1000},
+  &quot;farmerName&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Jaspreet Singh&quot;, &quot;tsType&quot;: &quot;string&quot;},
+  &quot;registeredMandi&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;khanna&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;khanna&quot;, &quot;doraha&quot;, &quot;samrala&quot;, &quot;rajpura&quot;]},
+  &quot;showDemoNav&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;}
+}">
+
+const MANDIS = [
+  { id:'khanna', name:'Khanna Mandi', nameHi:'खन्ना मंडी', district:'Ludhiana, Punjab', congestion:'medium', queue:22 },
+  { id:'doraha', name:'Doraha Mandi', nameHi:'दोराहा मंडी', district:'Ludhiana, Punjab', congestion:'low', queue:6 },
+  { id:'samrala', name:'Samrala Mandi', nameHi:'समराला मंडी', district:'Ludhiana, Punjab', congestion:'full', queue:0 },
+  { id:'rajpura', name:'Rajpura Mandi', nameHi:'राजपुरा मंडी', district:'Patiala, Punjab', congestion:'low', queue:4 },
+];
+
+const DATES = [
+  { idx:0, label:'Today', sub:'6 Sep · Sun' },
+  { idx:1, label:'Mon', sub:'7 Sep' },
+  { idx:2, label:'Tue', sub:'8 Sep' },
+  { idx:3, label:'Wed', sub:'9 Sep' },
+  { idx:4, label:'Thu', sub:'10 Sep' },
+];
+
+const TIME_LABELS = ['6:00–8:00 AM','8:00–10:00 AM','10:00 AM–12:00 PM','12:00–2:00 PM','2:00–4:00 PM','4:00–6:00 PM'];
+
+const SLOT_STATUS = {
+  khanna:  ['open','filling','full','filling','open','open'],
+  doraha:  ['open','open','open','open','open','filling'],
+  samrala: ['full','full','full','filling','full','full'],
+  rajpura: ['open','open','filling','open','open','open'],
+};
+
+const CONGESTION_META = {
+  low:    { label:'Low',    labelHi:'कम',    text:'var(--color-accent-2-800)', dot:'var(--color-accent-2-600)', bg:'var(--color-accent-2-100)', border:'var(--color-accent-2-300)', bars:1 },
+  medium: { label:'Medium', labelHi:'मध्यम', text:'var(--color-accent-800)',   dot:'var(--color-accent-600)',   bg:'var(--color-accent-100)',   border:'var(--color-accent-300)',   bars:2 },
+  full:   { label:'Full',   labelHi:'फुल',   text:'var(--color-neutral-700)',  dot:'var(--color-neutral-600)',  bg:'var(--color-neutral-200)',  border:'var(--color-neutral-400)',  bars:3 },
+};
+
+const STATUS_META = {
+  open:    { label:'Open',    labelHi:'उपलब्ध',    text:'var(--color-accent-2-800)', dot:'var(--color-accent-2-600)', bg:'var(--color-accent-2-100)', border:'var(--color-accent-2-300)', bars:1 },
+  filling: { label:'Filling', labelHi:'भर रहा है', text:'var(--color-accent-800)',   dot:'var(--color-accent-600)',   bg:'var(--color-accent-100)',   border:'var(--color-accent-300)',   bars:2 },
+  full:    { label:'Full',    labelHi:'फुल',       text:'var(--color-neutral-700)',  dot:'var(--color-neutral-600)',  bg:'var(--color-neutral-200)',  border:'var(--color-neutral-400)',  bars:3 },
+};
+
+const ALT_SLOTS = [
+  { id:'alt1', mandiId:'doraha',  mandiName:'Doraha Mandi',  dateIdx:2, timeId:2 },
+  { id:'alt2', mandiId:'rajpura', mandiName:'Rajpura Mandi', dateIdx:1, timeId:3 },
+  { id:'alt3', mandiId:'khanna',  mandiName:'Khanna Mandi',  dateIdx:3, timeId:5 },
+];
+
+function makeBars(level, color){
+  return [0,1,2].map(i => ({ style: `width:5px;height:${6+i*4}px;border-radius:2px;background:${i<level?color:'var(--color-neutral-300)'};` }));
+}
+
+function hashCode(str){
+  let h = 0;
+  for (let i=0;i<str.length;i++){ h = (h*31 + str.charCodeAt(i)) & 0xffffffff; }
+  return Math.abs(h);
+}
+
+function makeQR(seed){
+  const N = 9, cells = [], h = hashCode(seed);
+  for (let r=0;r<N;r++){
+    for (let c=0;c<N;c++){
+      const inTL = r<3 && c<3, inTR = r<3 && c>=N-3, inBL = r>=N-3 && c<3;
+      let on;
+      if (inTL || inTR || inBL){
+        const rr = inTL||inTR ? r : r-(N-3);
+        const cc = inTL||inBL ? c : c-(N-3);
+        on = (rr===0 || rr===2 || cc===0 || cc===2);
+      } else {
+        on = ((h >> ((r*N+c) % 30)) & 1) === 1;
+      }
+      cells.push({ key: r+'-'+c, color: on ? 'var(--color-text)' : '#ffffff' });
+    }
+  }
+  return cells;
+}
+
+function circleStyle(done, current){
+  if (done) return 'width:32px;height:32px;border-radius:50%;background:var(--color-accent-600);display:flex;align-items:center;justify-content:center;flex-shrink:0;';
+  if (current) return 'width:32px;height:32px;border-radius:50%;background:var(--color-accent-600);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 0 4px var(--color-bg),0 0 0 7px var(--color-accent-200);';
+  return 'width:32px;height:32px;border-radius:50%;background:var(--color-neutral-100);border:2px solid var(--color-neutral-300);display:flex;align-items:center;justify-content:center;flex-shrink:0;';
+}
+function lineStyle(passed){
+  return `width:2px;flex:1;background:${passed?'var(--color-accent-600)':'var(--color-neutral-300)'};min-height:20px;`;
+}
+
+class Component extends DCLogic {
+  state = {
+    screen: 'home',
+    selectedMandiId: null, dateIdx: 1, timeId: null,
+    hasBooking: false, bookingReleased: false,
+    stageIndex: 1, paid: false,
+    swapTarget: null, swapDone: false, swapResultText: '',
+    callSeconds: 0, activeDigit: null, ivrToast: 'Say a number or press a key to navigate.',
+  };
+
+  componentDidMount(){
+    this._t = setInterval(() => this.setState(s => ({ callSeconds: s.callSeconds + 1 })), 1000);
+  }
+  componentWillUnmount(){ clearInterval(this._t); }
+
+  goHome = () => this.setState({ screen: 'home' });
+  goBooking = () => this.setState({ screen: 'booking' });
+  goStatus = () => this.setState({ screen: 'status' });
+  goSwap = () => this.setState({ screen: 'swap' });
+  goIvr = () => this.setState({ screen: 'ivr' });
+
+  onConfirmBooking = () => {
+    const st = this.state;
+    const mandiId = st.selectedMandiId || this.props.registeredMandi || 'khanna';
+    const slotArr = SLOT_STATUS[mandiId] || SLOT_STATUS.khanna;
+    if (st.timeId == null || slotArr[st.timeId] === 'full') return;
+    this.setState({ hasBooking: true, bookingReleased: false, screen: 'confirm' });
+  };
+
+  onAdvance = () => {
+    const st = this.state;
+    if (st.stageIndex < 5) this.setState({ stageIndex: st.stageIndex + 1 });
+    else if (!st.paid) this.setState({ paid: true });
+  };
+
+  onRelease = () => {
+    this.setState({ swapDone: true, swapResultText: 'Slot released back to the pool. Another farmer can now book it.', bookingReleased: true, hasBooking: false });
+  };
+
+  onConfirmSwap = () => {
+    const st = this.state;
+    const alt = ALT_SLOTS.find(a => a.id === st.swapTarget);
+    if (!alt) return;
+    this.setState({
+      selectedMandiId: alt.mandiId, dateIdx: alt.dateIdx, timeId: alt.timeId,
+      swapDone: true, swapResultText: `Slot swapped to ${alt.mandiName}.`,
+      swapTarget: null, stageIndex: 1, paid: false,
+    });
+  };
+
+  onSwapBackHome = () => this.setState({ screen: 'home', swapDone: false });
+
+  onKey = (d) => {
+    const actions = { '1':'Connecting you to slot booking…', '2':'Reading out your current status…', '3':'Opening reschedule options…', '4':'Connecting to an agent…', '*':'Repeating the menu…' };
+    this.setState({ activeDigit: d, ivrToast: actions[d] || 'Key press registered.' });
+  };
+
+  renderVals(){
+    const st = this.state;
+    const registeredMandiId = this.props.registeredMandi || 'khanna';
+    const selectedMandiId = st.selectedMandiId || registeredMandiId;
+    const farmerName = this.props.farmerName || 'Jaspreet Singh';
+    const showDemoNav = this.props.showDemoNav !== false;
+    const findMandi = id => MANDIS.find(m => m.id === id) || MANDIS[0];
+
+    const registeredMandi = findMandi(registeredMandiId);
+    const selectedMandi = findMandi(selectedMandiId);
+    const selectedDate = DATES[st.dateIdx];
+    const slotArr = SLOT_STATUS[selectedMandiId] || SLOT_STATUS.khanna;
+
+    const screensDef = [
+      { id:'home', label:'Home' }, { id:'booking', label:'Book' }, { id:'confirm', label:'Confirm' },
+      { id:'status', label:'Status' }, { id:'swap', label:'Swap' }, { id:'ivr', label:'IVR' },
+    ];
+    const jumpPills = screensDef.map(s => {
+      const active = st.screen === s.id;
+      return {
+        id: s.id, label: s.label,
+        onClick: () => this.setState({ screen: s.id }),
+        style: `padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid ${active?'var(--color-accent)':'var(--color-divider)'};background:${active?'var(--color-accent)':'var(--color-neutral-100)'};color:${active?'var(--color-bg)':'var(--color-text)'};transition:all .15s;`,
+      };
+    });
+
+    const mandiList = MANDIS.map(m => {
+      const meta = CONGESTION_META[m.congestion];
+      const sel = m.id === selectedMandiId;
+      return {
+        id: m.id, name: m.name, nameHi: m.nameHi, district: m.district,
+        label: meta.label, dotColor: meta.dot,
+        badgeStyle: `display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:${meta.bg};border:1px solid ${meta.border};font-size:12px;font-weight:700;color:${meta.text};flex-shrink:0;`,
+        bars: makeBars(meta.bars, meta.dot),
+        queueNote: m.congestion === 'full' ? 'Yard full · no entry' : `${m.queue} in queue now`,
+        cardStyle: `display:flex;flex-direction:column;padding:14px;border-radius:var(--radius-lg);border:2px solid ${sel?'var(--color-accent)':'var(--color-divider)'};background:${sel?'var(--color-accent-100)':'var(--color-neutral-100)'};cursor:pointer;transition:all .15s;box-sizing:border-box;`,
+        onClick: () => this.setState({ selectedMandiId: m.id, timeId: null }),
+      };
+    });
+
+    const dateList = DATES.map(d => {
+      const sel = d.idx === st.dateIdx;
+      return {
+        ...d,
+        style: `flex:0 0 auto;padding:12px 18px;border-radius:999px;border:1.5px solid ${sel?'var(--color-accent)':'var(--color-divider)'};background:${sel?'var(--color-accent)':'var(--color-neutral-100)'};color:${sel?'var(--color-bg)':'var(--color-text)'};cursor:pointer;text-align:center;min-width:76px;box-sizing:border-box;`,
+        onClick: () => this.setState({ dateIdx: d.idx, timeId: null }),
+      };
+    });
+
+    const timeList = TIME_LABELS.map((label, i) => {
+      const status = slotArr[i];
+      const meta = STATUS_META[status];
+      const disabled = status === 'full';
+      const sel = st.timeId === i;
+      return {
+        id: i, label, statusLabel: meta.label, statusLabelHi: meta.labelHi,
+        bars: makeBars(meta.bars, meta.dot),
+        chipStyle: `padding:12px;border-radius:var(--radius-md);border:2px solid ${sel?'var(--color-accent)':meta.border};background:${sel?'var(--color-accent-100)':(disabled?meta.bg:'var(--color-neutral-100)')};opacity:${disabled?0.62:1};cursor:${disabled?'not-allowed':'pointer'};display:flex;flex-direction:column;gap:6px;box-sizing:border-box;`,
+        badgeStyle: `align-self:flex-start;font-size:10.5px;font-weight:700;color:${meta.text};background:${meta.bg};border:1px solid ${meta.border};padding:2px 8px;border-radius:999px;`,
+        onClick: disabled ? undefined : () => this.setState({ timeId: i }),
+      };
+    });
+
+    const selectedTime = st.timeId != null ? timeList[st.timeId] : null;
+    const canConfirm = !!selectedTime;
+    const confirmButtonStyle = `width:100%;background:${canConfirm?'var(--color-accent)':'var(--color-neutral-300)'};border:none;border-radius:999px;padding:16px;color:${canConfirm?'var(--color-bg)':'var(--color-neutral-600)'};font-family:var(--font-heading);font-size:15px;cursor:${canConfirm?'pointer':'not-allowed'};box-sizing:border-box;`;
+    const selectedTimeLabel = selectedTime ? selectedTime.label : '—';
+
+    const tokenNo = `MM-${selectedMandi.id.slice(0,2).toUpperCase()}-24${st.dateIdx}${st.timeId ?? 0}17`;
+    const qrCells = makeQR(tokenNo);
+
+    const stageIndex = st.stageIndex;
+    const queueDone = stageIndex > 1, queueCurrent = stageIndex === 1;
+    const done2 = stageIndex > 2, current2 = stageIndex === 2, reached2 = stageIndex >= 2, notReached2 = !reached2;
+    const done3 = stageIndex > 3, current3 = stageIndex === 3, reached3 = stageIndex >= 3, notReached3 = !reached3;
+    const done4 = stageIndex > 4, current4 = stageIndex === 4, reached4 = stageIndex >= 4, notReached4 = !reached4;
+    const current5 = stageIndex === 5 && !st.paid, reached5 = stageIndex >= 5, notReached5 = !reached5;
+
+    const stageNames = ['Booked','Queue Position','Gate Entry','Weighment & Grading','J-Form Generated','DBT Payment'];
+    let advanceLabel = '';
+    if (stageIndex < 5) advanceLabel = `Demo: advance to "${stageNames[stageIndex+1]}" →`;
+    else if (!st.paid) advanceLabel = 'Demo: mark payment as Paid →';
+    const showAdvance = showDemoNav && (stageIndex < 5 || !st.paid);
+
+    const bookingSummaryShort = selectedTime ? `${selectedMandi.name} · ${selectedDate.label} · ${selectedTime.label}` : '';
+    const currentBookingLabel = selectedTime ? `${selectedMandi.name} · ${selectedDate.label} ${selectedDate.sub} · ${selectedTime.label}` : '';
+
+    const altSlots = ALT_SLOTS.map(a => {
+      const sel = st.swapTarget === a.id;
+      const d = DATES[a.dateIdx];
+      return {
+        id: a.id, label: `${a.mandiName} · ${d.label} ${d.sub} · ${TIME_LABELS[a.timeId]}`,
+        style: `padding:12px;border-radius:var(--radius-md);border:2px solid ${sel?'var(--color-accent)':'var(--color-divider)'};background:${sel?'var(--color-accent-100)':'var(--color-neutral-100)'};cursor:pointer;font-size:13px;color:var(--color-text);font-weight:600;`,
+        onClick: () => this.setState({ swapTarget: a.id }),
+      };
+    });
+    const confirmSwapStyle = `width:100%;margin-top:12px;background:${st.swapTarget?'var(--color-accent)':'var(--color-neutral-300)'};border:none;border-radius:999px;padding:12px;color:${st.swapTarget?'var(--color-bg)':'var(--color-neutral-600)'};font-size:13.5px;font-weight:700;cursor:${st.swapTarget?'pointer':'not-allowed'};box-sizing:border-box;`;
+
+    const mm = String(Math.floor(st.callSeconds/60)).padStart(2,'0');
+    const ss = String(st.callSeconds%60).padStart(2,'0');
+    const callTimer = `${mm}:${ss}`;
+
+    const ivrMenu = [
+      { digit:'1', label:'Book a Slot', labelHi:'स्लॉट बुक करें' },
+      { digit:'2', label:'Check Status', labelHi:'स्थिति जांचें' },
+      { digit:'3', label:'Reschedule / Cancel', labelHi:'स्लॉट बदलें या रद्द करें' },
+      { digit:'4', label:'Talk to an Agent', labelHi:'सहायक से बात करें' },
+      { digit:'*', label:'Repeat Menu', labelHi:'दोबारा सुनें' },
+    ].map(m => {
+      const active = st.activeDigit === m.digit;
+      return {
+        ...m,
+        rowStyle: `display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:var(--radius-md);background:${active?'var(--color-accent-600)':'transparent'};transition:background .2s;`,
+        numStyle: `width:26px;height:26px;border-radius:50%;background:${active?'#fff':'rgba(255,255,255,.12)'};color:${active?'var(--color-accent-700)':'#fff'};display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;`,
+        textStyle: `color:#fff;font-weight:600;font-size:13.5px;`,
+        subStyle: `color:rgba(255,255,255,.55);font-size:11.5px;`,
+      };
+    });
+
+    const keypadItems = ['1','2','3','4','5','6','7','8','9','*','0','#'].map(d => ({
+      digit: d, onClick: () => this.onKey(d),
+      style: `width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:19px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer;`,
+    }));
+
+    return {
+      androidWidth: 412, androidHeight: 892,
+      showDemoNav, jumpPills,
+      farmerName, farmerInitials: farmerName.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase(),
+      registeredMandi, hasBooking: st.hasBooking && !st.bookingReleased, bookingSummaryShort,
+      goHome: this.goHome, goBooking: this.goBooking, goStatus: this.goStatus, goSwap: this.goSwap, goIvr: this.goIvr,
+      isHome: st.screen==='home', isBooking: st.screen==='booking', isConfirm: st.screen==='confirm', isStatus: st.screen==='status', isSwap: st.screen==='swap', isIvr: st.screen==='ivr',
+      tabHomeColor: st.screen==='home' ? 'var(--color-accent-700)' : 'var(--color-neutral-500)',
+      tabBookColor: st.screen==='booking' ? 'var(--color-accent-700)' : 'var(--color-neutral-500)',
+      tabStatusColor: st.screen==='status' ? 'var(--color-accent-700)' : 'var(--color-neutral-500)',
+      tabHelpColor: st.screen==='ivr' ? 'var(--color-accent-700)' : 'var(--color-neutral-500)',
+      mandiList, dateList, timeList, canConfirm, onConfirmBooking: this.onConfirmBooking, confirmButtonStyle,
+      selectedMandi, selectedDate, selectedTimeLabel, tokenNo, qrCells,
+      onAdvance: this.onAdvance, advanceLabel, showAdvance,
+      queueCurrent, queueDone,
+      stage1Circle: circleStyle(queueDone, queueCurrent), stage1Line: lineStyle(queueDone),
+      stage2Circle: circleStyle(done2, current2), stage2Line: lineStyle(done2), done2, current2, reached2, notReached2,
+      stage3Circle: circleStyle(done3, current3), stage3Line: lineStyle(done3), done3, current3, reached3, notReached3,
+      stage4Circle: circleStyle(done4, current4), stage4Line: lineStyle(done4), done4, current4, reached4, notReached4,
+      stage5Circle: circleStyle(st.paid, current5), current5, reached5, notReached5, paid: st.paid,
+      moisture: '11.8%', weightKg: '3,420 kg', grade: 'Grade A', jformNo: 'J-Form No. JF/PB/2026/048213',
+      dbtAmount: '₹1,02,850', dbtHoursLeft: '18h 42m', dbtProgressPct: '61%',
+      currentBookingLabel, altSlots, confirmSwapStyle, onRelease: this.onRelease, onConfirmSwap: this.onConfirmSwap,
+      swapDone: st.swapDone, swapResultText: st.swapResultText, onSwapBackHome: this.onSwapBackHome,
+      callTimer, ivrMenu, ivrToast: st.ivrToast, keypadItems,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
